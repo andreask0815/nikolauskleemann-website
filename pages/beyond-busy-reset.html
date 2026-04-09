@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond Busy Reset | Nikolaus Kleemann</title>
+  <meta name="description" content="7 Minuten. Zurück zu Klarheit, Präsenz und innerer Stabilität – auch unter Druck. Das Beyond Busy Reset für Führungspersönlichkeiten.">
+  <link rel="icon" type="image/png" href="../img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Landing Page specific styles */
+    .lp-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: var(--space-3xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lp-hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,90,0,0.03) 0%, rgba(255,90,0,0.08) 100%);
+      pointer-events: none;
+    }
+
+    .lp-hero h1 {
+      color: var(--color-white);
+      font-size: var(--fs-hero);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-md);
+    }
+
+    .lp-hero .subline {
+      font-size: var(--fs-body-lg);
+      color: rgba(255,255,255,0.7);
+      max-width: 560px;
+      line-height: var(--lh-body);
+    }
+
+    .lp-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin-bottom: var(--space-md);
+    }
+
+    .lp-section {
+      padding: var(--space-3xl) 0;
+    }
+
+    .lp-section--light {
+      background: var(--color-light);
+    }
+
+    .lp-section--dark {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .lp-narrow {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .lp-text p {
+      color: var(--color-gray-700);
+      margin-bottom: 1.4em;
+      font-size: var(--fs-body);
+      line-height: 1.8;
+    }
+
+    .lp-section--dark .lp-text p {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .lp-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lp-text .emphasis {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .lp-section--dark .lp-text .emphasis {
+      color: var(--color-white);
+    }
+
+    .lp-standalone {
+      font-size: var(--fs-h3);
+      font-weight: 600;
+      color: var(--color-primary);
+      line-height: 1.4;
+      margin: var(--space-lg) 0;
+    }
+
+    .lp-section--dark .lp-standalone {
+      color: var(--color-white);
+    }
+
+    .lp-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--color-accent);
+      margin: var(--space-xl) 0;
+    }
+
+    .lp-divider--center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Inhalt Box */
+    .lp-contains {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+
+    .lp-contains__item {
+      padding: var(--space-lg);
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-gray-200);
+    }
+
+    .lp-contains__icon {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .lp-contains__title {
+      font-size: var(--fs-body);
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+    }
+
+    .lp-contains__desc {
+      font-size: var(--fs-small);
+      color: var(--color-gray-500);
+      line-height: 1.6;
+    }
+
+    /* Framework Mini */
+    .lp-framework {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin: var(--space-lg) 0;
+    }
+
+    .lp-framework__item {
+      padding: 0.5rem 1.25rem;
+      background: rgba(255,90,0,0.06);
+      border: 1px solid rgba(255,90,0,0.15);
+      border-radius: 100px;
+      font-size: var(--fs-small);
+      font-weight: 600;
+      color: var(--color-primary);
+      letter-spacing: 0.02em;
+    }
+
+    /* Outcome List */
+    .lp-outcomes {
+      margin: var(--space-lg) 0;
+    }
+
+    .lp-outcomes li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.875rem;
+      color: var(--color-gray-700);
+      line-height: 1.6;
+    }
+
+    .lp-section--dark .lp-outcomes li {
+      color: rgba(255,255,255,0.8);
+    }
+
+    .lp-outcomes li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65em;
+      width: 6px;
+      height: 6px;
+      background: var(--color-accent);
+      border-radius: 50%;
+    }
+
+    /* Opt-in */
+    .lp-optin {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      max-width: 480px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .lp-section--dark .lp-optin {
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .lp-optin__title {
+      font-size: var(--fs-h3);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: var(--space-xs);
+      text-align: center;
+    }
+
+    .lp-optin__subtitle {
+      font-size: var(--fs-small);
+      color: var(--color-gray-500);
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .lp-optin .form__input {
+      margin-bottom: var(--space-sm);
+    }
+
+    .lp-optin .btn {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: var(--fs-body);
+      margin-top: var(--space-xs);
+    }
+
+    .lp-optin__note {
+      font-size: 0.8125rem;
+      color: var(--color-gray-500);
+      text-align: center;
+      margin-top: var(--space-md);
+      line-height: 1.5;
+    }
+
+    /* Bonus */
+    .lp-bonus {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #2a3d5a 100%);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+      color: var(--color-white);
+      margin-top: var(--space-xl);
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lp-bonus::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--color-accent);
+    }
+
+    .lp-bonus__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+    }
+
+    .lp-bonus__title {
+      font-size: var(--fs-h3);
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: var(--space-md);
+    }
+
+    .lp-bonus p {
+      color: rgba(255,255,255,0.75);
+      font-size: var(--fs-body);
+      line-height: 1.7;
+      margin-bottom: 1em;
+    }
+
+    .lp-bonus p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lp-bonus .emphasis {
+      color: var(--color-white);
+      font-weight: 600;
+    }
+
+    /* Trust */
+    .lp-trust {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+
+    .lp-trust__img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .lp-trust__name {
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .lp-trust__role {
+      font-size: var(--fs-small);
+      color: var(--color-gray-500);
+      line-height: 1.5;
+    }
+
+    /* Soft Close */
+    .lp-close {
+      text-align: center;
+      padding: var(--space-3xl) 0;
+    }
+
+    .lp-close p {
+      color: var(--color-gray-500);
+      font-size: var(--fs-body);
+      line-height: 1.8;
+    }
+
+    /* Minimal Header for Landing Page */
+    .lp-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding: var(--space-md) 0;
+    }
+
+    .lp-header__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lp-header__logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: -0.02em;
+    }
+
+    .lp-header__back {
+      font-size: var(--fs-small);
+      color: rgba(255,255,255,0.4);
+      transition: color 0.3s;
+    }
+
+    .lp-header__back:hover {
+      color: rgba(255,255,255,0.8);
+    }
+
+    @media (max-width: 768px) {
+      .lp-contains {
+        grid-template-columns: 1fr;
+      }
+
+      .lp-trust {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .lp-optin {
+        padding: var(--space-lg);
+      }
+
+      .lp-bonus {
+        padding: var(--space-lg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal Header -->
+  <div class="lp-header">
+    <div class="lp-header__inner">
+      <span class="lp-header__logo">Nikolaus Kleemann</span>
+      <a href="../index.html" class="lp-header__back">Zur Website</a>
+    </div>
+  </div>
+
+  <!-- 1. HERO -->
+  <section class="lp-hero">
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="lp-narrow fade-in">
+        <span class="lp-label">Beyond Busy Reset</span>
+        <h1>Ich funktioniere.<br>Aber ich bin nicht mehr ganz bei mir.</h1>
+        <p class="subline">7 Minuten, die Sie zurückbringen. Zu Klarheit, Präsenz und innerer Stabilität – auch unter Druck.</p>
+        <div style="margin-top: var(--space-xl);">
+          <a href="#reset" class="btn btn--primary">Reset erhalten</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PROBLEM / REALITÄT -->
+  <section class="lp-section">
+    <div class="container">
+      <div class="lp-narrow fade-in">
+        <div class="lp-text">
+          <p>Sie treffen Entscheidungen. Sie führen Teams. Sie tragen Verantwortung.</p>
+          <p>Von außen läuft alles.</p>
+        </div>
+
+        <div class="lp-divider"></div>
+
+        <div class="lp-text">
+          <p>Aber innerlich merken Sie:</p>
+          <p class="emphasis">Der Kopf ist voll. Die Ruhe fehlt. Die Klarheit ist nicht mehr da, wo sie sein sollte.</p>
+        </div>
+
+        <div class="lp-text" style="margin-top: var(--space-lg);">
+          <p>Sie reagieren, statt zu führen.</p>
+          <p>Sie funktionieren, statt präsent zu sein.</p>
+          <p>Und das spüren Sie. Auch wenn es niemand sieht.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. REFRAME -->
+  <section class="lp-section lp-section--light">
+    <div class="container">
+      <div class="lp-narrow fade-in" style="text-align: center;">
+        <div class="lp-text">
+          <p>Das Problem ist nicht zu viel Arbeit.</p>
+          <p>Das Problem ist, dass Sie den Zugang zu sich selbst verloren haben.</p>
+        </div>
+
+        <p class="lp-standalone" style="margin-top: var(--space-xl);">Und dieser Zugang lässt sich wiederherstellen.<br>In wenigen Minuten. Nicht in Wochen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. VORSTELLUNG BEYOND BUSY RESET -->
+  <section class="lp-section">
+    <div class="container">
+      <div class="lp-narrow fade-in">
+        <span class="lp-label">Das Format</span>
+        <h2 style="margin-bottom: var(--space-md);">Der Beyond Busy Reset</h2>
+
+        <div class="lp-text">
+          <p>Ein kompaktes Audio-Format, das Sie in 7 Minuten zurück in Kontakt bringt. Mit Ihrem Körper, Ihrem Atem und Ihrer Klarheit.</p>
+          <p>Kein Motivationstalk. Keine Theorie. Sondern ein konkreter Prozess, der auf dem 5B Framework basiert – entwickelt aus der Arbeit mit Führungspersönlichkeiten unter Druck.</p>
+        </div>
+
+        <div class="lp-framework">
+          <span class="lp-framework__item">Body</span>
+          <span class="lp-framework__item">Breath</span>
+          <span class="lp-framework__item">Balance</span>
+          <span class="lp-framework__item">Bond</span>
+          <span class="lp-framework__item">Being</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. WAS ENTHALTEN IST -->
+  <section class="lp-section lp-section--light">
+    <div class="container">
+      <div class="fade-in" style="max-width: 640px; margin: 0 auto;">
+        <h2 style="margin-bottom: var(--space-sm);">Was Sie erhalten</h2>
+
+        <div class="lp-contains">
+          <div class="lp-contains__item">
+            <div class="lp-contains__icon">&#9654;</div>
+            <div class="lp-contains__title">7-Minuten Audio Reset</div>
+            <div class="lp-contains__desc">Ein geführter Prozess, der Sie durch die fünf Ebenen des Frameworks führt. Direkt anwendbar. Überall. Sofort.</div>
+          </div>
+          <div class="lp-contains__item">
+            <div class="lp-contains__icon">&#9635;</div>
+            <div class="lp-contains__title">Reset Card (PDF)</div>
+            <div class="lp-contains__desc">Eine Seite. Das gesamte 5B Framework auf einen Blick. Zum Ausdrucken, Ablegen oder Mitnehmen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WIRKUNG / OUTCOME -->
+  <section class="lp-section">
+    <div class="container">
+      <div class="lp-narrow fade-in">
+        <h2 style="margin-bottom: var(--space-md);">Was sich verändert</h2>
+
+        <div class="lp-text">
+          <p>Der Reset ist kein Wundermittel. Aber er schafft etwas, das im Alltag verloren geht:</p>
+        </div>
+
+        <ul class="lp-outcomes">
+          <li>Einen Moment der Rückkehr zu sich selbst</li>
+          <li>Spürbare Ruhe im Nervensystem</li>
+          <li>Klarheit, die nicht aus dem Kopf kommt – sondern aus dem Zustand</li>
+          <li>Einen neuen Ausgangspunkt für die nächste Entscheidung</li>
+        </ul>
+
+        <div class="lp-text" style="margin-top: var(--space-lg);">
+          <p class="emphasis">Nicht mehr Aktivität. Sondern ein anderer Zugang zu dem, was Sie bereits können.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. OPT-IN -->
+  <section class="lp-section lp-section--light" id="reset">
+    <div class="container">
+      <div class="fade-in">
+        <div class="lp-optin">
+          <div class="lp-optin__title">Beyond Busy Reset</div>
+          <div class="lp-optin__subtitle">Audio + Reset Card direkt in Ihr Postfach.</div>
+
+          <form id="resetForm" action="https://formspree.io/f/placeholder" method="POST">
+            <input type="text" name="name" class="form__input" placeholder="Ihr Name" required>
+            <input type="email" name="email" class="form__input" placeholder="Ihre E-Mail-Adresse" required>
+            <input type="hidden" name="_subject" value="Beyond Busy Reset Anfrage">
+            <button type="submit" class="btn btn--primary">Reset erhalten</button>
+          </form>
+
+          <p class="lp-optin__note">Ich schreibe selten. Und nur, wenn es wirklich relevant ist.<br>Jederzeit mit einem Klick abmeldbar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. BONUS -->
+  <section class="lp-section">
+    <div class="container">
+      <div class="fade-in">
+        <div class="lp-bonus">
+          <div class="lp-bonus__label">Zusätzlich</div>
+          <div class="lp-bonus__title">20-Minuten Leadership Reset Session</div>
+          <p>Für Teilnehmerinnen und Teilnehmer dieser Seite öffne ich täglich eine begrenzte Anzahl an persönlichen Reset Sessions.</p>
+          <p><span class="emphasis">Die ersten 10 Anmeldungen pro Tag</span> erhalten zusätzlich zum Reset die Möglichkeit, ihre aktuelle Situation direkt mit mir zu klären.</p>
+          <p>Kein Verkaufsgespräch. Sondern 20 Minuten Klarheit.</p>
+          <p>Wenn Sie merken, dass genau das gerade Ihr Thema ist, lohnt es sich, nicht zu warten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. VERTRAUEN / POSITIONIERUNG -->
+  <section class="lp-section lp-section--light">
+    <div class="container">
+      <div class="lp-narrow fade-in">
+        <div class="lp-trust">
+          <img src="../img/photos/portrait-sw.jpg" alt="Nikolaus Kleemann" class="lp-trust__img">
+          <div>
+            <div class="lp-trust__name">Nikolaus Kleemann</div>
+            <div class="lp-trust__role">Leadership Architect. Geschäftsführer. Ehemaliger Leistungssportler.<br>Seit über zehn Jahren Arbeit mit Führungspersönlichkeiten an Klarheit, Präsenz und Wirkung unter Druck.</div>
+          </div>
+        </div>
+
+        <div class="lp-divider" style="margin-top: var(--space-xl);"></div>
+
+        <div class="lp-text" style="margin-top: var(--space-lg);">
+          <p>Der Beyond Busy Reset basiert auf dem gleichen Framework, das ich in der direkten Arbeit mit Führungskräften, in Keynotes und in Executive-Formaten einsetze.</p>
+          <p>Es ist kein Marketing-Produkt. Sondern ein Arbeitsinstrument.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. SOFT CLOSE -->
+  <section class="lp-close">
+    <div class="container">
+      <div class="lp-narrow fade-in">
+        <p style="font-size: var(--fs-h3); font-weight: 600; color: var(--color-primary); margin-bottom: var(--space-md);">Sie müssen nicht alles ändern.</p>
+        <p>Manchmal reicht es, kurz anzuhalten.<br>Und von dort aus weiterzugehen.</p>
+
+        <div style="margin-top: var(--space-xl);">
+          <a href="#reset" class="btn btn--primary">Reset erhalten</a>
+        </div>
+
+        <p style="margin-top: var(--space-xl); font-size: var(--fs-small); color: var(--color-gray-500);">7 Minuten. Für den Moment, in dem Führung wieder bei Ihnen beginnt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Minimal Footer -->
+  <footer style="background: var(--color-dark); color: rgba(255,255,255,0.4); padding: var(--space-lg) 0; font-size: var(--fs-small);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm);">
+      <span>&copy; 2026 Nikolaus Kleemann</span>
+      <div style="display: flex; gap: var(--space-md);">
+        <a href="impressum.html" style="color: rgba(255,255,255,0.4); transition: color 0.3s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Impressum</a>
+        <a href="datenschutz.html" style="color: rgba(255,255,255,0.4); transition: color 0.3s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
